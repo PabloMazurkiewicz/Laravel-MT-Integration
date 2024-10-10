@@ -10,19 +10,19 @@ This is Laravel 6.x package wrapper library for Metatrader 5 Web API
 ### Installing 
 To install the package, in terminal:
 ```
-composer require tarikhagustia/laravel-mt5
+composer require PabloMazurkiewicz/LaravelMt5
 ```
 
 ### Configure
 If you don't use auto-discovery, add the ServiceProvider to the providers array in config/app.php
 ```
-Tarikhagustia\LaravelMt5\LaravelMt5Provider::class,
+PabloMazurkiewicz\LaravelMt5\LaravelMt5Provider::class,
 ```
 
 #### Copy the package config to your local config with the publish command:
 
 ```bash
-php artisan vendor:publish --provider="Tarikhagustia\LaravelMt5\LaravelMt5Provider"
+php artisan vendor:publish --provider="PabloMazurkiewicz\LaravelMt5\LaravelMt5Provider"
 ```
 
 and then you can configure connection information to MT5 with this ``.env`` value
@@ -38,8 +38,8 @@ MT5_SERVER_WEB_PASSWORD=
 
 ### Create Deposit
 ```php
-use Tarikhagustia\LaravelMt5\Entities\Trade;
-use Tarikhagustia\LaravelMt5\LaravelMt5;
+use PabloMazurkiewicz\LaravelMt5\Entities\Trade;
+use PabloMazurkiewicz\LaravelMt5\LaravelMt5;
 
 $api = new LaravelMt5();
 $trade = new Trade();
@@ -54,8 +54,8 @@ The result variable will return Trade class with ticket information, you can gra
 
 ### Create User
 ```php
-use Tarikhagustia\LaravelMt5\Entities\User;
-use Tarikhagustia\LaravelMt5\LaravelMt5;
+use PabloMazurkiewicz\LaravelMt5\Entities\User;
+use PabloMazurkiewicz\LaravelMt5\LaravelMt5;
 
 $api = new LaravelMt5();
 $user = new User();
@@ -63,11 +63,11 @@ $user->setName("John Due");
 $user->setEmail("john@due.com");
 $user->setGroup("demo\demoforex");
 $user->setLeverage("50");
-$user->setPhone("0856123456");
-$user->setAddress("Sukabumi");
-$user->setCity("Sukabumi");
-$user->setState("Jawa Barat");
-$user->setCountry("Indonesia");
+$user->setPhone("11111111");
+$user->setAddress("Cordoba");
+$user->setCity("Cordoba");
+$user->setState("Cordoba");
+$user->setCountry("Argentina");
 $user->setZipCode(1470);
 $user->setMainPassword("Secure123");
 $user->setInvestorPassword("NotSecure123");
@@ -78,7 +78,7 @@ $result = $api->createUser($user);
 
 ### Get Trading Account Information
 ```php
-use Tarikhagustia\LaravelMt5\LaravelMt5;
+use PabloMazurkiewicz\LaravelMt5\LaravelMt5;
 
 $api = new LaravelMt5();
 $user = $api->getTradingAccounts($login);
@@ -90,7 +90,7 @@ $freeMargin = $user->MarginFree;
 
 ### Get Trading History By Login Number
 ```php
-use Tarikhagustia\LaravelMt5\LaravelMt5;
+use PabloMazurkiewicz\LaravelMt5\LaravelMt5;
 
 $api = new LaravelMt5();
 // Get Closed Order Total and pagination
@@ -105,7 +105,7 @@ foreach ($trades as $trade) {
 
 ### Open Order
 ```php
-use Tarikhagustia\LaravelMt5\LaravelMt5;
+use PabloMazurkiewicz\LaravelMt5\LaravelMt5;
 $api = new LaravelMt5();
 $api->dealerSend([
     'Login' => 8113,
@@ -136,11 +136,3 @@ The result variable will return User class with login information, you can grab 
 ## Contributing
 
 Thank you for considering contributing to the Laravel MT5! you can fork this repository and make pull request.
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel MT5, please send an e-mail to Tarikh Agustia via [agustia.tarikh150@gmail.com](mailto:agustia.tarikh150@gmail.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
